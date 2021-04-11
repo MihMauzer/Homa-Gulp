@@ -4,10 +4,55 @@
 //@import 'main/parameters';// переменные
 
 //Общее
-@import 'main/reset'; // сброс стилей для кроссбраузерности
+//@import 'main/reset'; // сброс стилей для кроссбраузерности
 //@import 'main/common'; // общие стили
 //@import 'main/grid'; // базовая 12ти колоночная сетка для сайта(сделана на основе bootstrap), классы .container/.row/.col-md-6 и т.д.
 
 //Компоненты(все файлы в папке components) -> добавляются автоматически в стили, импортить сюда их не нужно
 
 // дальше можно писать все стили сайта в этот файл, или писать их в компонентах
+
+.form {}
+
+.fieldgroup-wrap {
+    margin: 0 0 10px;
+}
+
+.fieldgroup {
+    display: block;
+    margin: 0 0 10px;
+    cursor: pointer;
+    &__text {
+        position: relative;
+        padding-left: 20px;
+        &::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            content: '';
+            height: 15px;
+            width: 15px;
+            border-radius: 50%;
+            border: 1px solid green;
+        }
+        &::after {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            height: 8px;
+            width: 8px;
+            border-radius: 50%;
+        }
+    }
+}
+
+.radio {
+    opacity: 0;
+    visibility: hidden;
+    width: 1px;
+    height: 1px;
+    &:checked + .fieldgroup__text::after {
+        background-color: green;
+    }
+}
